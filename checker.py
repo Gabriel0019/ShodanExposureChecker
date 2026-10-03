@@ -20,8 +20,11 @@ try:
     print(f"IP: {host['ip_str']}")
     print(f"Organization: {host.get('org', 'n/a')}")
     print(f"Operating System: {host.get('os', 'n/a')}")
-    print("Open Ports:")
+    print("Services:")
     for service in host['data']:
-        print(f"Port: {service['port']}, Banner: {service['data']}")
+        print(f"Port: {service.get('port', 'n/a')}, Banner: {service.get('data', 'n/a')}")
+        print(f"Transport: {service.get('transport', 'n/a')}, Product: {service.get('product', 'n/a')}")
+        print(f"Version: {service.get('version', 'n/a')}, Hostnames: {service.get('hostnames', 'n/a')}")
+        
 except shodan.APIError as e:
     print(f"Error: {e}")
