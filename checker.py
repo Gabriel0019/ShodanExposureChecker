@@ -25,6 +25,16 @@ try:
         print(f"Port: {service.get('port', 'n/a')}, Banner: {service.get('data', 'n/a')}")
         print(f"Transport: {service.get('transport', 'n/a')}, Product: {service.get('product', 'n/a')}")
         print(f"Version: {service.get('version', 'n/a')}, Hostnames: {service.get('hostnames', 'n/a')}")
-        
+         
+    print("\nDetected vulnerabilities:")
+    vulns = host.get('vulns', [])
+    if vulns:
+        for cve in vulns:
+            print(f"- {cve}")
+    else:
+        print("No vulnerabilities found.")
+
 except shodan.APIError as e:
     print(f"Error: {e}")
+
+   
